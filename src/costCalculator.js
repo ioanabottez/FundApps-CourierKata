@@ -2,6 +2,15 @@ const fs = require('fs');
 const readFile = fs.readFileSync('parcel.json');
 const newData = JSON.parse(readFile);
 
+const getOverweightPrice = (parcel, weight) => {
+
+    if (weight > parcel.weightLimit)
+        return (weight - parcel.weightLimit) * 2;
+    else 
+        return 0;
+}
+
+
     const getOrderPrice = (order, isSpeedy) => {
        
         let orderArray = [];
@@ -10,12 +19,18 @@ const newData = JSON.parse(readFile);
             const size = parcel.size;
             const quantity = parcel.quantity;
 
+            let overweight = [];
+            parcel.weight.forEach(
+                parcelWeight => overweight.push(getOverweightPrice(found, parcelWeight))
+            );
+
             const items = 
             {
                 size, 
                 quantity,
                 pricePerItem: found.price,
-                totalPrice: found.price * quantity,
+                overweightPricePerItem: overweight,
+                totalPrice: found.price * quantity + overweight.reduce((a,b) => a + b, 0),
             };
             orderArray.push(items);
         });

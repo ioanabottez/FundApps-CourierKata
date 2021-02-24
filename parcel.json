@@ -2,19 +2,23 @@
     "parcel": [
         {
             "size": "Small",
-            "price":  3
+            "price":  3,
+            "weightLimit": 1
         },
         {
             "size": "Medium",
-            "price":  8
+            "price":  8,
+            "weightLimit": 3
         },
         {
             "size": "Large",
-            "price":  15
+            "price":  15,
+            "weightLimit": 6
         },
         {
             "size": "XL",
-            "price":  25
+            "price":  25,
+            "weightLimit": 10
         }
     ]
 } 
