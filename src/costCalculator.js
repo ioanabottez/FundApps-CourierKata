@@ -5,7 +5,10 @@ const newData = JSON.parse(readFile);
 const getOverweightPrice = (parcel, weight) => {
 
     if (weight > parcel.weightLimit)
-        return (weight - parcel.weightLimit) * 2;
+        if(parcel.size != "Heavy")
+            return (weight - parcel.weightLimit) * 2;
+        else
+            return (weight - parcel.weightLimit);
     else 
         return 0;
 }

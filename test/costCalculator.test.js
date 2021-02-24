@@ -22,6 +22,11 @@ describe('getOrderPrice', function() {
                 size: 'XL',
                 quantity: 3,
                 weight: [10, 12, 6]
+            },
+            {
+                size: 'Heavy',
+                quantity: 2,
+                weight: [55, 50]
             }
         ],
     };
@@ -55,13 +60,21 @@ describe('getOrderPrice', function() {
                 pricePerItem: 25,
                 overweightPricePerItem: [0, 4, 0],
                 totalPrice: 79,
+            },
+            {
+                size: 'Heavy',
+                quantity: 2,
+                pricePerItem: 50,
+                overweightPricePerItem: [5, 0],
+                totalPrice: 105
             }
         ],
     };    
 
+        //the receipt for the orders with speedy shipping
         const receipt2 = {
-            speedyShipping: 130,
-            orderTotal: 260,
+            speedyShipping: 235,
+            orderTotal: 470,
             parcels:[
                 {
                     size: 'Small',
@@ -90,14 +103,21 @@ describe('getOrderPrice', function() {
                     pricePerItem: 25,
                     overweightPricePerItem: [0, 4, 0],
                     totalPrice: 79,
+                },
+                {
+                    size: 'Heavy',
+                    quantity: 2,
+                    pricePerItem: 50,
+                    overweightPricePerItem: [5, 0],
+                    totalPrice: 105
                 }
             ],
         }
-    it("should calculate the correct price for an order with weight limit but without speedy delivery", function(){
+    it("should calculate the correct price for an order with weight limit and heavy parcels but without speedy delivery", function(){
         expect(costCalculator.getOrderPrice(order, false)).toEqual(receipt);
     });
 
-    it("should calculate the correct price for an order with weight limit and with speedy delivery", function(){
+    it("should calculate the correct price for an order with weight limit, heavy parcels and speedy delivery", function(){
         expect(costCalculator.getOrderPrice(order, true)).toEqual(receipt2);
     });
 }); 

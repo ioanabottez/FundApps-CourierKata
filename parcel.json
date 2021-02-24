@@ -19,6 +19,11 @@
             "size": "XL",
             "price":  25,
             "weightLimit": 10
+        },
+        {
+            "size": "Heavy",
+            "price": 50,
+            "weightLimit": 50
         }
     ]
 } 
