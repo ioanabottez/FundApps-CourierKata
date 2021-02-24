@@ -1,0 +1,20 @@
+{
+    "parcel": [
+        {
+            "size": "Small",
+            "price":  3
+        },
+        {
+            "size": "Medium",
+            "price":  8
+        },
+        {
+            "size": "Large",
+            "price":  15
+        },
+        {
+            "size": "XL",
+            "price":  25
+        }
+    ]
+} 
